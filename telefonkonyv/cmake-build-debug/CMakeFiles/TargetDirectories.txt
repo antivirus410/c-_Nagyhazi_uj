@@ -1,0 +1,3 @@
+C:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/cmake-build-debug/CMakeFiles/telefonkonyv.dir
+C:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/cmake-build-debug/CMakeFiles/rebuild_cache.dir
