@@ -1,20 +1,21 @@
 #include <iostream>
+#include "fstream"
+#include "string5.h"
 #include "Bejegyzes.h"
 #include "Ceg.h"
 #include "Ember.h"
 #include "Telefonkonyv.h"
-#include "fstream"
-#include "string5.h"
 
 int main() {
 
     Telefonkonyv test;
-
-    test.beszur();
+    char *uj = "test.txt";
+    test.fileBeolvas(uj);
 
     test.listaz();
-
-    test.fileKiir();
+    size_t x = 1;
+    test.torol(x);
+   // test.fileKiir();
 
     //std::cout << "Fasz";
     //std::getline(be,test);

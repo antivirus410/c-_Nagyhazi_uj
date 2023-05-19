@@ -50,37 +50,43 @@ cmake_ninja_workdir = C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ
 build cmake_object_order_depends_target_telefonkonyv: phony || CMakeFiles/telefonkonyv.dir
 
 build CMakeFiles/telefonkonyv.dir/main.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/main.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
   DEP_FILE = CMakeFiles\telefonkonyv.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
 
 build CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/Bejegyzes.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
   DEP_FILE = CMakeFiles\telefonkonyv.dir\Bejegyzes.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
 
 build CMakeFiles/telefonkonyv.dir/string5.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/string5.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
   DEP_FILE = CMakeFiles\telefonkonyv.dir\string5.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
 
 build CMakeFiles/telefonkonyv.dir/Ember.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/Ember.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
   DEP_FILE = CMakeFiles\telefonkonyv.dir\Ember.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
 
 build CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/Ceg.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
   DEP_FILE = CMakeFiles\telefonkonyv.dir\Ceg.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
 
-build CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/telefonkonyv.cpp || cmake_object_order_depends_target_telefonkonyv
-  DEP_FILE = CMakeFiles\telefonkonyv.dir\telefonkonyv.cpp.obj.d
+build CMakeFiles/telefonkonyv.dir/Telefonkonyv.cpp.obj: CXX_COMPILER__telefonkonyv_Debug C$:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/Telefonkonyv.cpp || cmake_object_order_depends_target_telefonkonyv
+  DEFINES = -DMEMTRACE
+  DEP_FILE = CMakeFiles\telefonkonyv.dir\Telefonkonyv.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir
   OBJECT_FILE_DIR = CMakeFiles\telefonkonyv.dir
@@ -93,7 +99,7 @@ build CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj: CXX_COMPILER__telefonkon
 #############################################
 # Link the executable telefonkonyv.exe
 
-build telefonkonyv.exe: CXX_EXECUTABLE_LINKER__telefonkonyv_Debug CMakeFiles/telefonkonyv.dir/main.cpp.obj CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj CMakeFiles/telefonkonyv.dir/string5.cpp.obj CMakeFiles/telefonkonyv.dir/Ember.cpp.obj CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj
+build telefonkonyv.exe: CXX_EXECUTABLE_LINKER__telefonkonyv_Debug CMakeFiles/telefonkonyv.dir/main.cpp.obj CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj CMakeFiles/telefonkonyv.dir/string5.cpp.obj CMakeFiles/telefonkonyv.dir/Ember.cpp.obj CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj CMakeFiles/telefonkonyv.dir/Telefonkonyv.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\telefonkonyv.dir

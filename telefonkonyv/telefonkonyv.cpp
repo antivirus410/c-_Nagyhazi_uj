@@ -2,9 +2,9 @@
 // Created by david on 2023. 05. 05..
 //
 
-#include "telefonkonyv.h"
-#include "Bejegyzes.h"
 #include "fstream"
+#include "Telefonkonyv.h"
+#include "Bejegyzes.h"
 
 size_t Telefonkonyv::emberek = 0;
 size_t Telefonkonyv::cegek = 0;
@@ -12,16 +12,16 @@ size_t Telefonkonyv::cegek = 0;
 void Telefonkonyv::listaz() {
     for (size_t i = 0; i < len; ++i) {
         tabla[i]->kiir();
-        //tabla[i]->osszehasonlit("Ceg");
     }
 }
 
-void Telefonkonyv::fileBeolvas() {
+void Telefonkonyv::fileBeolvas(char* fileNev) {
     std::ifstream fileIn;
-    String nameFile;
+    /*String nameFile;
     std::cout << "Irja be a file nevet! ";
     std::cin >> nameFile;
-    fileIn.open(nameFile.c_str(), std::fstream::in);
+    fileIn.open(nameFile.c_str(), std::fstream::in);*/
+    fileIn.open(fileNev, std::fstream::in);
 
     if (!fileIn.is_open()) {
         std::cout << "Nem talalhato a file!\n";
@@ -33,7 +33,7 @@ void Telefonkonyv::fileBeolvas() {
     if (len == 0) len = 1;
     tabla = new Bejegyzes*[len];
 
-    for (int i = 0; i < emberek; ++i) {
+    for (size_t i = 0; i < emberek; ++i) {
         String nev, cim, becenev, kozTer, hazszam, space = " ";
         int privSzam, munkaSzam;
         fileIn >> nev >> cim >> kozTer >>  hazszam >> becenev >> privSzam >> munkaSzam;
@@ -50,7 +50,7 @@ void Telefonkonyv::fileBeolvas() {
     fileIn.close();
 }
 
-void Telefonkonyv::fileKiir() {
+void Telefonkonyv::fileKiir(char* fileNev) {
     std::ofstream fileOut;
     String nameFile;
     std::cout << "Irja be a file nevet! ";
@@ -77,92 +77,109 @@ void Telefonkonyv::clear() {
 
 size_t Telefonkonyv::keres(const String& nev) {
     for (size_t i=0; i<len; i++) {
-        if (tabla[i]->osszehasonlit(nev)) {
-            return i; ///TODO: Szar! Rossz memoriacimet vesz át
+        if (tabla[i]->osszehasonlit(nev) == 0) {
+            return i;
         }
     }
     return -1;
 }
 
-void Telefonkonyv::szerkeszt() {
-    //torol();
-//    beszur();
+void Telefonkonyv::szerkeszt(size_t idx) {
+    torol(idx);
+   // beszur();
 
 }
 
-void Telefonkonyv::torol() {
-
+void Telefonkonyv::torol(size_t idx) {
+    if (idx > len ) {throw "Hiba: nagyobb az index mint amennyi adat van!\n";}
+    delete tabla[idx];
+    tabla[idx] = nullptr;
+    if (idx+1 <= emberek) {
+        emberek--;
+    }
+    else {
+        cegek--;
+    }
+    len--;
 }
-
 
 void Telefonkonyv::beszur() {
-    std::cout << "Ember beszurasahoz nyomjon 1-est!\nCeg beszurasahoz nyomjon 2-est!\nVisszalepeshez nyomjon 3-ast!\n";
+    std::cout << "Ember beszurasahoz/modositasahoz nyomjon 1-est!\nCeg beszurasahoz/modositasahoz nyomjon 2-est!\nVisszalepeshez nyomjon 3-ast!\n";
     int option;
     std::cin >> option;
     switch (option) {
         case 1: {
             String nev, cim, becenev, kozTer, hazszam, space = " ";
             int privSzam, munkaSzam;
-            std::cout << "Adja meg az Ember adatait(nev lakcim becenev privatszam munkaszam): ";
-            std::cin >> nev >> cim >> kozTer >>  hazszam >> becenev >> privSzam >> munkaSzam;
+            std::cout << "Adja meg az Ember adatait(nev lakcim becenev privatszam munkahelyiszam): ";
+            std::cin >> nev >> cim >> kozTer >> hazszam >> becenev >> privSzam >> munkaSzam;
             cim += space + kozTer + space + hazszam;
             Bejegyzes* uj = new Ember(nev,cim,munkaSzam,becenev,privSzam);
             len++;
-            Bejegyzes** tempa;
-            tempa = new Bejegyzes*[len];
+            Bejegyzes** tmp = new Bejegyzes*[len];
+            if (tmp == nullptr) {throw "Nem sikerült a foglalas beszurasnal!\n";}
             size_t j=0, i;
+
             for(i=0; i<emberek; i++) {
-                if(tabla[i]->osszehasonlit(uj) < 0) {
-                    tempa[j] = tabla[i];
+                if (tabla[i] == nullptr) {}
+                else if(tabla[i]->osszehasonlit(uj) < 0) {
+                    tmp[j] = tabla[i];
                 }
                 else {
-                    tempa[j] = uj;
+                    tmp[j] = uj;
                     j++;
-                    tempa[j] = tabla[i];
+                    tmp[j] = tabla[i];
                 }
                 j++;
             }
             if (i==j) {
-                tempa[j] = uj;
+                tmp[j] = uj;
                 j++;
             }
-            for (i = emberek; i<emberek+cegek; ++i) {
-                tempa[j] = tabla[i];
+            for (i = emberek; i<emberek+cegek; i++) {
+                if (tabla[i] == nullptr) {}
+                else {tmp[j] = tabla[i];}
                 j++;
             }
-            clear();
+            //clear();
             emberek++;
-            tabla = tempa;
+            delete[] tabla;
+            tabla = tmp;
             break;
         }
         case 2:{
             String nev, cim, tipus, kozTer, hazszam, space = " ";
             int adoSzam, munkaSzam;
+            std::cout << "Adja meg a Ceg adatait(nev cim tipus adoszam munkhelyiaszam): ";
             std::cin >> nev >> cim >> kozTer >>  hazszam >> tipus >> adoSzam >> munkaSzam;
             cim += space + kozTer + space + hazszam;
             Bejegyzes *uj= new Ceg(nev, cim, munkaSzam, tipus, adoSzam);
             len++;
-            Bejegyzes** tempa = new Bejegyzes*[len];
+            Bejegyzes** tmp = new Bejegyzes*[len];
+            if (tmp == nullptr) {throw "Nem sikerült a foglalas beszurasnal!\n";}
+            size_t j=0, i;
 
-            size_t j=0;
-            for(size_t i=0; i<emberek; i++) {
-                tempa[j] = tabla[i];
+            for(i=0; i<emberek; i++) {
+                if (tabla[i] == nullptr) {}
+                else tmp[j] = tabla[i];
+                j++;
             }
-            for (size_t i = emberek; i<emberek+cegek; ++i) {
-                if(tabla[i]->osszehasonlit(uj) == 1) {
-                    tempa[j] = tabla[i];
+            for(i=emberek; i<emberek+cegek; i++) {
+                if (tabla[i] == nullptr) {}
+                else if(tabla[i]->osszehasonlit(uj) < 0) {
+                    tmp[j] = tabla[i];
                 }
                 else {
-                    tempa[j] = uj;
+                    tmp[j] = uj;
                     j++;
-                    tempa[j] = tabla[i];
+                    tmp[j] = tabla[i];
                 }
                 j++;
             }
             cegek++;
             //clear();
             delete[] tabla;
-            tabla = tempa;
+            tabla = tmp;
             break;
         }
         case 3:{

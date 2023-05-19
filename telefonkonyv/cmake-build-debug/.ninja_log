@@ -1,15 +1,8 @@
 # ninja log v5
-56	827	7056324737596994	CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj	d89e54e17c423f08
-65	829	7056324737616984	CMakeFiles/telefonkonyv.dir/Ember.cpp.obj	21cbad411bc1ee24
-17	447	7054439788471631	CMakeFiles/telefonkonyv.dir/string5.cpp.obj	6ea396e100b38b6
-61	829	7056324737627457	CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj	6df2741c21a1907e
-2	346	7056334479403855	CMakeFiles/telefonkonyv.dir/main.cpp.obj	a2b4fcc5cfb5fd7e
-889	1284	7057877405976809	telefonkonyv.exe	b58a8ea38dd50048
-2	889	7057877402055251	CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj	25c11ca23cc1ecd7
-2	387	7057880111091092	CMakeFiles/telefonkonyv.dir/main.cpp.obj	c27b9ce1911d565f
-25	393	7057880111152365	CMakeFiles/telefonkonyv.dir/Ember.cpp.obj	6d4336574effe8d9
-20	410	7057880111318819	CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj	92ad609fae55b1c4
-11	424	7057880111452907	CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj	9c68955e4d670e0c
+27	854	7058849488026701	CMakeFiles/telefonkonyv.dir/Bejegyzes.cpp.obj	9c68955e4d670e0c
+54	856	7058849488038731	CMakeFiles/telefonkonyv.dir/Ember.cpp.obj	6d4336574effe8d9
 8	435	7057880111583406	CMakeFiles/telefonkonyv.dir/string5.cpp.obj	1e2c4815d432028
-16	509	7057880112328587	CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj	281567a347dd4a69
-509	597	7057880113162128	telefonkonyv.exe	b58a8ea38dd50048
+20	410	7057880111318819	CMakeFiles/telefonkonyv.dir/Ceg.cpp.obj	92ad609fae55b1c4
+3	843	7058849487909394	CMakeFiles/telefonkonyv.dir/main.cpp.obj	c27b9ce1911d565f
+859	1184	7058849491284096	telefonkonyv.exe	b58a8ea38dd50048
+41	859	7058849488058861	CMakeFiles/telefonkonyv.dir/telefonkonyv.cpp.obj	281567a347dd4a69

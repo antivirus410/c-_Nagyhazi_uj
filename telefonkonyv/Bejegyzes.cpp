@@ -2,8 +2,8 @@
 // Created by david on 2023. 05. 04..
 //
 
-#include "Bejegyzes.h"
 #include "cstring"
+#include "Bejegyzes.h"
 
 int Bejegyzes::osszehasonlit(const String& rhs) {
     return strcmp(nev.c_str(), rhs.c_str());

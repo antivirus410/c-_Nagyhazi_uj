@@ -5,10 +5,10 @@
 #ifndef TELEFONKONYV_TELEFONKONYV_H
 #define TELEFONKONYV_TELEFONKONYV_H
 
+#include "fstream"
 #include "Bejegyzes.h"
 #include "Ember.h"
 #include "Ceg.h"
-#include "fstream"
 
 class Telefonkonyv {
     static size_t emberek;
@@ -16,28 +16,27 @@ class Telefonkonyv {
     size_t len;
     Bejegyzes **tabla;
 public:
-    Telefonkonyv()  {
-        fileBeolvas();
-    }
+    Telefonkonyv()  {}
 
     static  void setEmber(size_t ember) {emberek = ember;}
     static  void setCeg(size_t ceg) {cegek = ceg;}
 
     size_t getLen() {return len;}
 
-    void beszur();
+    void beszur(Ember* uj);
+    void beszur(Ceg uj);
 
     void listaz ();
 
     size_t keres(const String& nev);
 
-    void szerkeszt();
+    void szerkeszt(size_t idx);
 
-    void torol();
+    void torol(size_t idx);
 
-    void fileBeolvas();
+    void fileBeolvas(char* fileNev);
 
-    void fileKiir();
+    void fileKiir(char* fileNev);
 
     void clear();
 
