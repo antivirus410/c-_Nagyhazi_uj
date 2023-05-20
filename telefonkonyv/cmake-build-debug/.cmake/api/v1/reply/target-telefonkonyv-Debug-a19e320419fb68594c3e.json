@@ -45,7 +45,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g"
 				}
 			],
 			"defines" : 
@@ -183,12 +183,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Telefonkonyv.cpp",
+			"path" : "telefonkonyv.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Telefonkonyv.h",
+			"path" : "telefonkonyv.h",
 			"sourceGroupIndex" : 1
 		}
 	],

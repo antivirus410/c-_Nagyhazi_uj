@@ -24,7 +24,7 @@ public:
     size_t getLen() {return len;}
 
     void beszur(Ember* uj);
-    void beszur(Ceg uj);
+    void beszur(Ceg* uj);
 
     void listaz ();
 
@@ -34,14 +34,14 @@ public:
 
     void torol(size_t idx);
 
-    void fileBeolvas(char* fileNev);
+    void fileBeolvas(const char* fileNev);
 
     void fileKiir(char* fileNev);
 
     void clear();
 
     ~Telefonkonyv() {
-        clear();
+        if (len != 0) clear();
         emberek=0;
         cegek=0;
         len=0;

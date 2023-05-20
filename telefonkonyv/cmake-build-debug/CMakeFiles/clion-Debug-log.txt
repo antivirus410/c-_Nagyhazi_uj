@@ -1,4 +1,0 @@
-"D:\CLion 2023.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/CLion 2023.1/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\david\CLionProjects\c++\1Telefonkonyv\CPP-NagyHZ\c++_Nagyhazi_uj\telefonkonyv -B C:\Users\david\CLionProjects\c++\1Telefonkonyv\CPP-NagyHZ\c++_Nagyhazi_uj\telefonkonyv\cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/david/CLionProjects/c++/1Telefonkonyv/CPP-NagyHZ/c++_Nagyhazi_uj/telefonkonyv/cmake-build-debug

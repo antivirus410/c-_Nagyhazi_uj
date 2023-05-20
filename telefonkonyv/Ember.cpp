@@ -6,7 +6,7 @@
 #include "Ember.h"
 
 void Ember::kiir(std::ostream& os) {
-    os << getNev() << " " << getCim() << " " << getMunkaSzam() << " " << privatSzam << " " << becenev << std::endl;
+    os << "Nev: " << getNev() << ", Lakcim: " << getCim() << ", Becenev: " << becenev << ", Privat telefonszam: " << privatSzam << ", Munkahelyi Telefonszam: " << getMunkaSzam() << std::endl;
 }
 
 void Ember::fkiir(std::ostream &os) {

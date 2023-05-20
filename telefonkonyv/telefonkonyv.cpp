@@ -11,20 +11,18 @@ size_t Telefonkonyv::cegek = 0;
 
 void Telefonkonyv::listaz() {
     for (size_t i = 0; i < len; ++i) {
+        std::cout << i << ". ";
         tabla[i]->kiir();
     }
 }
 
-void Telefonkonyv::fileBeolvas(char* fileNev) {
+void Telefonkonyv::fileBeolvas(const char* fileNev) {
     std::ifstream fileIn;
-    /*String nameFile;
-    std::cout << "Irja be a file nevet! ";
-    std::cin >> nameFile;
-    fileIn.open(nameFile.c_str(), std::fstream::in);*/
     fileIn.open(fileNev, std::fstream::in);
 
-    if (!fileIn.is_open()) {
-        std::cout << "Nem talalhato a file!\n";
+    if (fileIn.fail()) {
+        len=0;
+        throw "Nem talalhato a file!\n";
     }
 
     fileIn >> emberek;
@@ -52,10 +50,7 @@ void Telefonkonyv::fileBeolvas(char* fileNev) {
 
 void Telefonkonyv::fileKiir(char* fileNev) {
     std::ofstream fileOut;
-    String nameFile;
-    std::cout << "Irja be a file nevet! ";
-    std::cin >> nameFile;
-    fileOut.open(nameFile.c_str());
+    fileOut.open(fileNev);
 
     fileOut << emberek << " " << cegek << std::endl;
     for (size_t i = 0; i < emberek; ++i) {
@@ -78,14 +73,38 @@ void Telefonkonyv::clear() {
 size_t Telefonkonyv::keres(const String& nev) {
     for (size_t i=0; i<len; i++) {
         if (tabla[i]->osszehasonlit(nev) == 0) {
+            std::cout << i << ". ";
+            tabla[i]->kiir();
             return i;
         }
     }
     return -1;
 }
 
-void Telefonkonyv::szerkeszt(size_t idx) {
+void Telefonkonyv::szerkeszt(size_t idx) { ///TODO: Le kell tesztelni
     torol(idx);
+    switch (idx<emberek) {
+        case true: {
+            String nev, cim, becenev, kozTer, hazszam, space = " ";
+            int privSzam, munkaSzam;
+            std::cout << "Adja meg az Ember adatait(nev lakcim becenev privatszam munkahelyiszam): ";
+            std::cin >> nev >> cim >> kozTer >> hazszam >> becenev >> privSzam >> munkaSzam;
+            cim += space + kozTer + space + hazszam;
+            Ember* uj = new Ember(nev,cim,munkaSzam,becenev,privSzam);
+            beszur(uj);
+            break;
+        }
+        case false: {
+            String nev, cim, tipus, kozTer, hazszam, space = " ";
+            int adoSzam, munkaSzam;
+            std::cout << "Adja meg a Ceg adatait(nev cim tipus adoszam munkhelyiaszam): ";
+            std::cin >> nev >> cim >> kozTer >>  hazszam >> tipus >> adoSzam >> munkaSzam;
+            cim += space + kozTer + space + hazszam;
+            Ceg *uj= new Ceg(nev, cim, munkaSzam, tipus, adoSzam);
+            beszur(uj);
+            break;
+        }
+    }
    // beszur();
 
 }
@@ -103,18 +122,8 @@ void Telefonkonyv::torol(size_t idx) {
     len--;
 }
 
-void Telefonkonyv::beszur() {
-    std::cout << "Ember beszurasahoz/modositasahoz nyomjon 1-est!\nCeg beszurasahoz/modositasahoz nyomjon 2-est!\nVisszalepeshez nyomjon 3-ast!\n";
-    int option;
-    std::cin >> option;
-    switch (option) {
-        case 1: {
-            String nev, cim, becenev, kozTer, hazszam, space = " ";
-            int privSzam, munkaSzam;
-            std::cout << "Adja meg az Ember adatait(nev lakcim becenev privatszam munkahelyiszam): ";
-            std::cin >> nev >> cim >> kozTer >> hazszam >> becenev >> privSzam >> munkaSzam;
-            cim += space + kozTer + space + hazszam;
-            Bejegyzes* uj = new Ember(nev,cim,munkaSzam,becenev,privSzam);
+
+void Telefonkonyv::beszur(Ember *uj) {
             len++;
             Bejegyzes** tmp = new Bejegyzes*[len];
             if (tmp == nullptr) {throw "Nem sikerült a foglalas beszurasnal!\n";}
@@ -141,50 +150,36 @@ void Telefonkonyv::beszur() {
                 else {tmp[j] = tabla[i];}
                 j++;
             }
-            //clear();
             emberek++;
             delete[] tabla;
             tabla = tmp;
-            break;
-        }
-        case 2:{
-            String nev, cim, tipus, kozTer, hazszam, space = " ";
-            int adoSzam, munkaSzam;
-            std::cout << "Adja meg a Ceg adatait(nev cim tipus adoszam munkhelyiaszam): ";
-            std::cin >> nev >> cim >> kozTer >>  hazszam >> tipus >> adoSzam >> munkaSzam;
-            cim += space + kozTer + space + hazszam;
-            Bejegyzes *uj= new Ceg(nev, cim, munkaSzam, tipus, adoSzam);
-            len++;
-            Bejegyzes** tmp = new Bejegyzes*[len];
-            if (tmp == nullptr) {throw "Nem sikerült a foglalas beszurasnal!\n";}
-            size_t j=0, i;
 
-            for(i=0; i<emberek; i++) {
-                if (tabla[i] == nullptr) {}
-                else tmp[j] = tabla[i];
-                j++;
-            }
-            for(i=emberek; i<emberek+cegek; i++) {
-                if (tabla[i] == nullptr) {}
-                else if(tabla[i]->osszehasonlit(uj) < 0) {
-                    tmp[j] = tabla[i];
-                }
-                else {
-                    tmp[j] = uj;
-                    j++;
-                    tmp[j] = tabla[i];
-                }
-                j++;
-            }
-            cegek++;
-            //clear();
-            delete[] tabla;
-            tabla = tmp;
-            break;
-        }
-        case 3:{
-            ///TODO: Meg kell csinalni a visszatero cumot
-            break;
-        }
     }
+
+void Telefonkonyv::beszur(Ceg *uj) {
+    len++;
+    Bejegyzes** tmp = new Bejegyzes*[len];
+    if (tmp == nullptr) {throw "Nem sikerült a foglalas beszurasnal!\n";}
+    size_t j=0, i;
+
+    for(i=0; i<emberek; i++) {
+        if (tabla[i] == nullptr) {}
+        else tmp[j] = tabla[i];
+        j++;
+    }
+    for(i=emberek; i<emberek+cegek; i++) {
+        if (tabla[i] == nullptr) {}
+        else if(tabla[i]->osszehasonlit(uj) < 0) {
+            tmp[j] = tabla[i];
+        }
+        else {
+            tmp[j] = uj;
+            j++;
+            tmp[j] = tabla[i];
+        }
+        j++;
+    }
+    cegek++;
+    delete[] tabla;
+    tabla = tmp;
 }

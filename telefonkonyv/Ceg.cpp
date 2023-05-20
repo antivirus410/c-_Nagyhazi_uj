@@ -6,7 +6,7 @@
 
 
 void Ceg::kiir(std::ostream& os) {
-    os << getNev() << " " << getCim() << " " << getMunkaSzam() << " " << tipus << " " << adoSzam << std::endl;
+    os << "Ceg neve: "  << getNev() << ", Telephely cime: " << getCim() << ", Tipusa: " << tipus << ", Adoszama: " << adoSzam << ", Hivatalos telefonszam: " << getMunkaSzam() << std::endl;
 }
 
 void Ceg::fkiir(std::ostream &os) {
